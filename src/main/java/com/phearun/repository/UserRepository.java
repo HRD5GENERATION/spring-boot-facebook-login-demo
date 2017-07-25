@@ -9,7 +9,11 @@ import com.phearun.model.User;
 
 @Repository
 public class UserRepository {
-
+	
+	public UserRepository() {
+		System.out.println("=>UserRepository!");
+	}
+	
 	private List<User> users = new ArrayList<>();
 	
 	public void save(User user){
@@ -17,7 +21,8 @@ public class UserRepository {
 	}
 	
 	public boolean login(String facebookId){
-		return false;
+		System.out.println("=>" + facebookId);
+		return true;
 	}
 	
 }

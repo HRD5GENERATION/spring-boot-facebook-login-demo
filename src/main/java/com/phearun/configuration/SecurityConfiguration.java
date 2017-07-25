@@ -27,6 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private FacebookConnectionSignup facebookConnectionSignup;
 
+	@Autowired
+	private FacebookSignInAdapter facebookSignInAdapter;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
@@ -43,6 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		System.out.println("=> ProviderSignInController");
 		
         ((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignup);
-        return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, new FacebookSignInAdapter());
+        return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, facebookSignInAdapter);
     }
 }
